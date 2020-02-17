@@ -5,7 +5,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      filename: './dev.sqlite3'
-    }
+      filename: 'postgres://localhost/publications'
+    },
+    migrations: {
+      directory: './db/migrations'
+    },
+    useNullAsDefault: true
   },
 };
