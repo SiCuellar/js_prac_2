@@ -6,11 +6,11 @@ const bodyParser = require('body-parser');
 // const configuration = require('./knexfile')[environment];
 // const database = require('knex')(configuration);
 
-const Paper = require('../models/paper')
+const Paper = require('./lib/models/paper')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('port', process.env.PORT || 3002);
+app.set('port', process.env.PORT || 3003);
 app.locals.title = 'Publications';
 
 app.get('/', (request, response) => {
