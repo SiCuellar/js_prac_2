@@ -2,15 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-// const environment = process.env.NODE_ENV || 'development';
-// const configuration = require('./knexfile')[environment];
-// const database = require('knex')(configuration);
-
 const Paper = require('./lib/models/paper')
+const Footnote = require('./lib/models/footnote')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('port', process.env.PORT || 3003);
+app.set('port', process.env.PORT || 3005);
 app.locals.title = 'Publications';
 
 app.get('/', (request, response) => {
@@ -32,7 +29,7 @@ app.get('/api/v1/papers', (request, response) => {
 })
 
 app.get('/api/v1/footnotes', (request, response) => {
-  database('footnotes').select()
+  Footnote.all()
     .then((footnotes) => {
       response.status(200).json(footnotes);
     })
